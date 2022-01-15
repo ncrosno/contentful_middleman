@@ -100,7 +100,8 @@ module ContentfulMiddleman
         context.updated_at = entry.sys[@updated_at_key].iso8601 unless entry.sys[@updated_at_key].nil?
         context.created_at = entry.sys[@created_at_key].iso8601 unless entry.sys[@created_at_key].nil?
         context.id = entry.sys[:id]
-
+        context.tags = entry._metadata[:tags].map{|t| t.id} unless entry._metadata[:tags].nil?
+        
         context
       end
 
